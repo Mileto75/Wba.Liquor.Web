@@ -4,7 +4,7 @@
 
 namespace Wba.Liquor.Web.Migrations
 {
-    public partial class AddedDescriptionToBooze : Migration
+    public partial class second : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

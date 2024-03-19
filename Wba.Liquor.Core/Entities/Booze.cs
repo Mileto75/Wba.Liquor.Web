@@ -11,6 +11,7 @@ namespace Wba.Liquor.Core.Entities
         public int Volume { get; set; }
         public float AlcoholPercentage { get; set; }
         public string Description { get; set; }
+        public decimal Price { get; set; }
 
     }
 }

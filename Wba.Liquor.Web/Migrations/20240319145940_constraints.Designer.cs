@@ -11,8 +11,8 @@ using Wba.Liquor.Web.Data;
 namespace Wba.Liquor.Web.Migrations
 {
     [DbContext(typeof(BoozeDbContext))]
-    [Migration("20240314152134_AddedDescriptionToBooze")]
-    partial class AddedDescriptionToBooze
+    [Migration("20240319145940_constraints")]
+    partial class constraints
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,7 +38,12 @@ namespace Wba.Liquor.Web.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("money");
 
                     b.Property<int>("Volume")
                         .HasColumnType("int");
@@ -57,6 +62,7 @@ namespace Wba.Liquor.Web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -73,6 +79,7 @@ namespace Wba.Liquor.Web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -89,6 +96,7 @@ namespace Wba.Liquor.Web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -16,6 +16,24 @@ namespace Wba.Liquor.Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //fluent api configuration = alternative to data annotations
+
+            modelBuilder.Entity<Booze>()
+                .Property(b => b.Name)
+                .IsRequired()
+                .HasMaxLength(150);
+            modelBuilder.Entity<Booze>()
+                .Property(p => p.Price)
+                .HasColumnType("money");
+            modelBuilder.Entity<Brand>()
+                .Property(b => b.Name)
+                .IsRequired();
+            modelBuilder.Entity<Category>()
+                .Property(b => b.Name)
+                .IsRequired();
+            modelBuilder.Entity<Property>()
+                .Property(b => b.Name)
+                .IsRequired();
             base.OnModelCreating(modelBuilder);
         }
     }
