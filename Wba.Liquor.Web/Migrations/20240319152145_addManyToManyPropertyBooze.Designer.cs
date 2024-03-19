@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wba.Liquor.Web.Data;
 
@@ -10,9 +11,10 @@ using Wba.Liquor.Web.Data;
 namespace Wba.Liquor.Web.Migrations
 {
     [DbContext(typeof(BoozeDbContext))]
-    partial class BoozeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240319152145_addManyToManyPropertyBooze")]
+    partial class addManyToManyPropertyBooze
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +49,6 @@ namespace Wba.Liquor.Web.Migrations
                     b.Property<float>("AlcoholPercentage")
                         .HasColumnType("real");
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -68,8 +67,6 @@ namespace Wba.Liquor.Web.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
 
                     b.HasIndex("CategoryId");
 
@@ -144,26 +141,13 @@ namespace Wba.Liquor.Web.Migrations
 
             modelBuilder.Entity("Wba.Liquor.Core.Entities.Booze", b =>
                 {
-                    b.HasOne("Wba.Liquor.Core.Entities.Brand", "Brand")
-                        .WithMany("Boozes")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Wba.Liquor.Core.Entities.Category", "Category")
                         .WithMany("Boozes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Brand");
-
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Wba.Liquor.Core.Entities.Brand", b =>
-                {
-                    b.Navigation("Boozes");
                 });
 
             modelBuilder.Entity("Wba.Liquor.Core.Entities.Category", b =>

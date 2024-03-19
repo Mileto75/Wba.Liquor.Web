@@ -8,6 +8,7 @@ namespace Wba.Liquor.Core.Entities
 {
     public class Property : BaseEntity
     {
-        
+        //many booze
+        public ICollection<Booze> Boozes { get; set; }
     }
 }

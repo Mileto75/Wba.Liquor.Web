@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wba.Liquor.Web.Data;
 
@@ -10,9 +11,10 @@ using Wba.Liquor.Web.Data;
 namespace Wba.Liquor.Web.Migrations
 {
     [DbContext(typeof(BoozeDbContext))]
-    partial class BoozeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240319152527_addOneToManyBrand")]
+    partial class addOneToManyBrand
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
